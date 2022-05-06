@@ -31,8 +31,18 @@ if ($method !== 'GET') {
 // Connexion à la BDD
 require_once 'connexion.php';
 
+$limit = null;
+if (isset($_GET['limit']) && !empty($_GET['limit'])) {
+    $limit = "LIMIT {$_GET['limit']}";
+}
+
+$order = null;
+if (isset($_GET['order']) && !empty($_GET['order'])) {
+    $order = "ORDER BY title {$_GET['order']}";
+}
+
 // Sélection de tous les films en BDD
-$query = $db->query('SELECT * FROM movies');
+$query = $db->query("SELECT * FROM movies $order $limit");
 $movies = $query->fetchAll();
 
 // 200 - OK
