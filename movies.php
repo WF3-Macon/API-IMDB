@@ -7,7 +7,7 @@
 
 // Retour d'en-tête
 header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=UTF-8');
 
 // Récupération de la méthode
 $method = $_SERVER['REQUEST_METHOD'];
