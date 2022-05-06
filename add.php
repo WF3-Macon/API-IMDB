@@ -31,4 +31,33 @@ if ($method !== 'POST') {
 // Récupère les données envoyées en POST
 $datas = json_decode(file_get_contents('php://input'), true);
 
-echo json_encode($datas['image']);
+// Nettoie les données
+foreach ($datas as $key => $value) {
+    $datas[$key] = htmlspecialchars(strip_tags($value)); 
+}
+
+/**
+ * Si tous les champs sont bien remplis, on insère en BDD
+ */
+if (
+    !empty($datas['title']) 
+    && !empty($datas['description'])
+    && !empty($datas['date'])
+    && !empty($datas['time'])
+    && !empty($datas['director'])
+    && !empty($datas['image'])
+    && !empty($datas['trailer'])
+) {
+    echo json_encode($datas);
+}
+// Sinon on retourne une erreur...
+else {
+    http_response_code(400);
+
+    echo json_encode([
+        'status' => 400,
+        'message' => 'Bad Request'
+    ]);
+
+    exit;
+}
