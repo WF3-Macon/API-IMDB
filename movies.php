@@ -33,12 +33,14 @@ require_once 'connexion.php';
 
 $limit = null;
 if (isset($_GET['limit']) && !empty($_GET['limit'])) {
-    $limit = "LIMIT {$_GET['limit']}";
+    $value = htmlspecialchars(strip_tags($_GET['limit']));
+    $limit = "LIMIT {$value}";
 }
 
 $order = null;
 if (isset($_GET['order']) && !empty($_GET['order'])) {
-    $order = "ORDER BY title {$_GET['order']}";
+    $value = htmlspecialchars(strip_tags($_GET['order']));
+    $order = "ORDER BY title {$value}";
 }
 
 // Sélection de tous les films en BDD
