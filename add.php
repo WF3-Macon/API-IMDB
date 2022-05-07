@@ -7,6 +7,7 @@
 
 // Retour d'en-tête
 header('Access-Control-Allow-Origin: *');
+header('Access-Control-Request-Method: POST');
 header('Content-Type: application/json; charset=UTF-8');
 
 // Récupération de la méthode
@@ -55,7 +56,7 @@ if (
     $query = $db->prepare('INSERT INTO movies (title, description, date, time, director, image, trailer) VALUES (:title, :description, :date, :time, :director, :image, :trailer)');
     $query->bindValue(':title', $datas['title']);
     $query->bindValue(':description', $datas['description']);
-    $query->bindValue(':date', $datas['date']);
+    $query->bindValue(':date', date('Y-m-d', strtotime($datas['date'])));
     $query->bindValue(':time', $datas['time'], PDO::PARAM_INT);
     $query->bindValue(':director', $datas['director']);
     $query->bindValue(':image', $datas['image']);
