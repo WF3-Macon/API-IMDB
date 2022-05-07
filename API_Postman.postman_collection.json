@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "9ccd88ed-3267-4682-b592-57ecb0f3a7f0",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Récupère tous les films",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.test/movies.php",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"movies.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Récupère un film selon son ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.test/movie.php?id=1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"movie.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ajout d'un nouveau film",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Titre de mon film génial\",\n    \"description\": \"Description de mon film\",\n    \"date\": \"2022-05-06\",\n    \"time\": 97,\n    \"director\": \"Toujours moi\",\n    \"image\": \"https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg\",\n    \"trailer\": \"https://www.youtube.com/watch?v=oFSXvd1oCNA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.test/add.php",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"add.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mise à jour d'un film",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Nouveau\",\n    \"description\": \"Description de mon film\",\n    \"date\": \"2022-05-06\",\n    \"time\": 97,\n    \"director\": \"Nouveau Director\",\n    \"image\": \"https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg\",\n    \"trailer\": \"https://www.youtube.com/watch?v=oFSXvd1oCNA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.test/edit.php?id=1",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"edit.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Suppression d'un film",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://api.test/delete.php?id=2",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"delete.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
